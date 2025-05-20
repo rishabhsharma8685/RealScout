@@ -165,3 +165,18 @@ export async function getPropertyById({ id }: { id: string }) {
     return null;
   }
 }
+
+export async function createProperty(property: any) {
+  try {
+    const result = await databases.createDocument(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      ID.unique(),
+      property
+    );
+    return result;
+  } catch (error) {
+    console.error("Failed to create property:", error);
+    throw error;
+  }
+}

@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-
+import { Alert } from 'react-native';
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import Comment from "@/components/Comment";
@@ -264,15 +264,24 @@ const Property = () => {
               numberOfLines={1}
               className="text-primary-300 text-start text-2xl font-rubik-bold"
             >
-              ${property?.price}
+              ₹{property?.price}
             </Text>
           </View>
 
-          <TouchableOpacity className="flex-1 flex flex-row items-center justify-center bg-primary-300 py-3 rounded-full shadow-md shadow-zinc-400">
-            <Text className="text-white text-lg text-center font-rubik-bold">
-              Book Now
-            </Text>
-          </TouchableOpacity>
+          <TouchableOpacity
+  className="flex-1 flex flex-row items-center justify-center bg-primary-300 py-3 rounded-full shadow-md shadow-zinc-400"
+  onPress={() => {
+    Alert.alert(
+      "Contact Information",
+      `📧 Email: ${property?.email || "N/A"}\n📞 Phone: ${property?.phone || "N/A"}`,
+      [{ text: "OK" }]
+    );
+  }}
+>
+  <Text className="text-white text-lg text-center font-rubik-bold">
+    Contact  
+  </Text>
+</TouchableOpacity>
         </View>
       </View>
     </View>

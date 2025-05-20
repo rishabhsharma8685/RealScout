@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
-import { Image, ImageSourcePropType, Text, View } from "react-native";
+import { Image, ImageSourcePropType, Text, View, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 
 import icons from "@/constants/icons";
 
@@ -32,6 +33,8 @@ const TabIcon = ({
 );
 
 const TabsLayout = () => {
+  const router = useRouter();
+
   return (
     <Tabs
       screenOptions={{
@@ -65,6 +68,19 @@ const TabsLayout = () => {
           ),
         }}
       />
+
+      {/* Add Property Button (not linked to a tab screen directly) */}
+      <Tabs.Screen
+        name="add"
+        options={{
+          title: "Sell",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={icons.search} title="Sell" />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="profile"
         options={{

@@ -87,7 +87,7 @@ const Home = () => {
 
                 <View className="flex flex-col items-start ml-2 justify-center">
                   <Text className="text-xs font-rubik text-black-100">
-                    Good Morning
+                    Hi
                   </Text>
                   <Text className="text-base font-rubik-medium text-black-300">
                     {user?.name}
